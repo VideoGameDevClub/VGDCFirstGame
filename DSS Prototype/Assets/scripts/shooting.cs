@@ -8,13 +8,43 @@ public class shooting : MonoBehaviour
     public GameObject bulletPrefab;
     public float bulletForce = 20f;
 
-    // Update is called once per frame
-    void Update()
+    public int maxAmmo = 20;
+    public int currAmmo;
+
+    public ammoBar ammoBar;
+
+    public float refillTime = 1.0f;
+    public float refillCounter;
+
+    private void Start()
     {
-        if (Input.GetButtonDown("Fire1"))
+        refillCounter = refillTime;
+        ammoBar.setMaxAmmo(maxAmmo);
+        currAmmo = maxAmmo;
+    }
+
+    // Update is called once per frame
+    void FixedUpdate()
+    {
+        ammoBar.setAmmo(currAmmo);
+
+        if (Input.GetButtonDown("Fire1") && currAmmo > 0)
         {
             Shoot();
         }
+
+        //refill ammo
+        if (refillCounter <= refillTime && refillCounter > 0)
+        {
+            refillCounter -= Time.deltaTime;
+        }
+        else if(refillCounter <= 0)
+        {
+            refillCounter = refillTime;
+            if(currAmmo < maxAmmo)
+                currAmmo++;
+        }
+
     }
 
     void Shoot()
@@ -22,5 +52,8 @@ public class shooting : MonoBehaviour
         GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
         Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
         rb.AddForce(firePoint.up * bulletForce, ForceMode2D.Impulse);
+
+        currAmmo--;
+        ammoBar.setAmmo(currAmmo);
     }
 }

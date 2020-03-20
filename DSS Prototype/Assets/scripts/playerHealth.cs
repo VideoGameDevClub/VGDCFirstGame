@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class playerHealth : MonoBehaviour
 {
@@ -24,5 +25,23 @@ public class playerHealth : MonoBehaviour
     {
         currHealth -= damage;
         healthBar.setHealth(currHealth);
+        if(currHealth == 0)
+        {
+            PlayerDeath();
+        }
+    }
+
+    void PlayerDeath()
+    {
+        SceneManager.LoadScene("Zombie_Shooter");
+    }
+
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.collider.tag == "Enemy")
+        {
+            Debug.Log("Player hit");
+            TakeDamage(1);
+        }
     }
 }
