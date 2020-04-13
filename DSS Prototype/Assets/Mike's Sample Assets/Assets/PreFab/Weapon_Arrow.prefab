@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 3217113376399111075}
   m_Layer: 0
   m_Name: Weapon_Arrow
-  m_TagString: Untagged
+  m_TagString: Bullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -29,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 6963954346897122222}
   m_LocalRotation: {x: 0, y: 0, z: 1, w: 0}
   m_LocalPosition: {x: 11.5, y: -28.1, z: 0}
-  m_LocalScale: {x: 0.05, y: 0.05, z: 0.05}
+  m_LocalScale: {x: 0.03, y: 0.03, z: 0.03}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -143,5 +143,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8469515bed1e61143a48e0c547ef6672, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hitEffect: {fileID: 5301454287801264466, guid: 9e7c3d8670a3581469e80839fcd32d32,
-    type: 3}
+  hitEffect: {fileID: 6963954346897122222}

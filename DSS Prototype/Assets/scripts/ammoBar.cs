@@ -10,10 +10,10 @@ public class ammoBar : MonoBehaviour
     public Image fill;
 
 
-    public void setMaxAmmo(int health)
+    public void setMaxAmmo(int ammo)
     {
-        slider.maxValue = health;
-        slider.value = health;
+        slider.maxValue = ammo;
+        slider.value = ammo;
 
         fill.color = gradient.Evaluate(1f);
     }

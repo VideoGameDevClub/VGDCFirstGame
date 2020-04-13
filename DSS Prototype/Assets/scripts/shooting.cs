@@ -24,7 +24,7 @@ public class shooting : MonoBehaviour
     }
 
     // Update is called once per frame
-    void FixedUpdate()
+    void Update()
     {
         ammoBar.setAmmo(currAmmo);
 
